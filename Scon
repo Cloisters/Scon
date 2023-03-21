@@ -1,0 +1,107 @@
+#!/bin/bash
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+clear
+# Define banner
+banner=" $RED    
+                     ███████╗ ██████╗ ██████╗ ███╗   ██╗                                                                                                            │
+│                    ██╔════╝██╔════╝██╔═══██╗████╗  ██║                                                                                                            │
+│                    ███████╗██║     ██║   ██║██╔██╗ ██║                                                                                                            │
+│                    ╚════██║██║     ██║   ██║██║╚██╗██║                                                                                                            │
+│                    ███████║╚██████╗╚██████╔╝██║ ╚████║                                                                                                            │
+│                    ╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝  
+
+                        $YELLOW Developed by EntitY 12 
+$RED             Instagram=$NC _https_prabh_  $RED  Youtube$NC = EntityNetwork
+"
+
+# Print banner
+echo -e "$banner"
+echo -e "$GREEN What would you like to do? "
+echo -e "$YELLOW 1. Scan for open ports on an IP address${NC}"    
+echo -e "$YELLOW 2. Enumerate services on a host${NC}"
+echo -e "$YELLOW 3. About Tool${NC}"
+read -p '=> ' choice
+
+case $choice in
+  1)
+    # Prompt the user for an IP address to scan
+    echo -e "${GREEN}Enter the IP address to scan:${NC}"
+    read -p "=> " ip_address
+    
+    # Perform a port scan using nmap
+    echo -e "${GREEN}Scanning for open ports on $ip_address...${NC}"
+    nmap $ip_address
+    read -p "Do You want to go service enumration (y/N): " o
+    
+  ;;
+  
+  2)
+ clear
+echo -e "$banner"
+echo -e "${GREEN}Which service would you like to connect to?$NC"
+echo -e "$YELLOW 1. FTP                                  $RED 2. SSH "
+echo -e "$YELLOW 3. SMB                                  $RED 4. SMTP $NC"
+read -p '=> ' OPT
+
+# Get connection details from the user
+echo -e "${GREEN}Enter the hostname or IP address of the remote server:${NC}"
+read -p "=> " host
+echo -e "${GREEN}Enter the port number (press enter to use default):${NC}"
+read -p "=> " port
+echo -e "${GREEN}Enter the username:${NC}"
+read -p "=> " user
+
+# Connect to the selected service
+case $OPT in
+  1)
+    # Connect to FTP
+    if [ -z "$port" ]
+    then
+      ftp $host
+    else
+      ftp -p $port $host
+    fi
+    ;;
+  2)
+    # Connect to SSH
+    if [ -z "$port" ]
+    then
+      ssh $user@$host
+    else
+      ssh -p $port $user@$host
+    fi
+    ;;
+  3)
+    # Connect to SMB
+    if [ -z "$port" ]
+    then
+      smbclient //$host/share -U $user
+    else
+      smbclient //$host/share -p $port -U $user
+    fi
+    ;;
+  4)
+    # Connect to SMTP
+    if [ -z "$port" ]
+    then
+      openssl s_client -connect $host:smtp
+    else
+      openssl s_client -connect $host:$port -starttls smtp
+    fi
+    ;;
+  *)
+    echo -e "${RED}Invalid choice!${NC}"
+    ;;
+esac
+  ;;
+   3)
+      open about.html  
+ 
+   ;;
+
+esac

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Scon</title>
+    <style>
+      /* CSS styling for the page */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+      }
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-size: 2em;
+      }
+      section {
+        padding: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      }
+      h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      li::before {
+        content: "\2022";
+        color: #f79f79;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+      pre {
+        background-color: #eee;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      a {
+        color: #f79f79;
+        text-decoration: none;
+        border-bottom: 2px solid #f79f79;
+      }
+      a:hover {
+        color: #fff;
+        background-color: #f79f79;
+      }
+      /* JavaScript for smooth scrolling */
+      window.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
+      });
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>About Scon</h1>
+    </header>
+    <section>
+      <h2>What is Scon?</h2>
+      <p>Scon is a powerful service enumeration tool that allows you to quickly and easily identify all the services running on a particular target network or system.</p>
+      <p>Whether you're a security professional looking to assess the security posture of a network, or a network administrator trying to get a better understanding of what's running on your systems, Scon is the tool for you.</p>
+      <h2>Features</h2>
+      <ul>
+        <li>Fast and reliable service enumeration</li>
+        <li>Support for a wide variety of protocols and services</li>
+        <li>Easy-to-use command-line interface</li>
+        <li>Customizable output formats</li>
+        <li>Integration with other security tools</li>
+      </ul>
+      <h2>How to Use Scon</h2>
+      <p>To use Scon, simply download and install the tool on your system. Once installed, you can run Scon from the command line using the following syntax:</p>
+      <pre>bash scon</pre>
+      <p>For more information on how to use Scon, including a list of all available options and examples of common usage scenarios, please refer to the <a href="#documentation">Scon documentation</a>.</p
+      <h2>Contact Us</h2>
+    <p>If you have any questions or feedback about Scon, please don't hesitate to get in touch with us. You can reach us by email at <a href="mailto:support@scon.com">support@scon.com</a>, or follow us on Twitter at <a href="https://twitter.com/sconsecurity">@sconsecurity</a>.</p>
+  </body>
+</html>
