@@ -16,7 +16,7 @@ banner=" $RED
 │                    ╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝  
 
                         $YELLOW Developed by EntitY 12 
-$RED             Instagram=$NC _https_prabh_  $RED  Youtube$NC = EntityNetwork
+$RED             Instagram=$NC entity.network  $RED  Youtube$NC = EntityNetwork
 "
 
 # Print banner
@@ -35,9 +35,7 @@ case $choice in
     
     # Perform a port scan using nmap
     echo -e "${GREEN}Scanning for open ports on $ip_address...${NC}"
-    nmap $ip_address
-    read -p "Do You want to go service enumration (y/N): " o
-    
+    nmap $ip_address    
   ;;
   
   2)
